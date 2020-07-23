@@ -18,7 +18,7 @@ const ProductList = () => {
     fetchData();
   }, [])
 
-  let [filterValue, setFilterValue] = useState("Prada")
+  let [filterValue, setFilterValue] = useState()
 
   const showProducts = () => {
     if (loading || !products) {
@@ -29,7 +29,7 @@ const ProductList = () => {
     else {
       return (
         <div className="container">
-          {products.filter(a => a.brand.name === filterValue).map(product => {
+          {products.filter(filter => filter.brand.name === filterValue).map(product => {
             let url = "https://www.farfetch.com" + product.url;
             return (
               <div className="product" key={product.id}>
@@ -67,7 +67,6 @@ const ProductList = () => {
 
       <h1>Products below:</h1>
       {showProducts()}
-
     </div>
   )
 }

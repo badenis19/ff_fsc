@@ -1,9 +1,11 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import './App.scss';
 import ProductList from './components/ProductList';
 import ntc from 'ntc';
-import ColorThief from 'color-thief';
-// import d from './assets/img.jpeg'
+import { usePalette } from 'react-palette';
+
+// import ColorThief from 'color-thief';
+
 
 //  10 products and identifies the prominent colour of each item of clothing. 
 // The output of this should be a JSON file which contains an array of products 
@@ -15,6 +17,13 @@ function App() {
 
   // =========================
 
+  const sendProductDetailsWithProminentColor = () => {
+
+    
+  }
+
+
+  // ========================
   const size = 2;
 
   const products = [
@@ -56,37 +65,9 @@ function App() {
   // TO DO: Extract dominent color from image 
   // =========================
 
-  // let sourceImage = './assets/img.jpeg';
-  // let colorThief = new ColorThief();
-  // colorThief.getColor(sourceImage)
-  //   .then(response => {
-  //     console.log(response)
-  //   })
+  const { data, loading, error } = usePalette("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEhUSEhAVDxUQFRUVDw8QFRUPDw8PFRUXFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQ0OFQ4NFSsdFRktKysrKystLSsrKysrKysrKysrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOAA4QMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAABAAIDBf/EACIQAQEBAQAABgMBAQAAAAAAAAABEQISITFBYeFRcYGhE//EABYBAQEBAAAAAAAAAAAAAAAAAAAHBf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APC5nksHuaxVMOC0gBCKYB6EnkvEqCiv4WqgVeRptBRCVApFi91QOC0gBCKYB6EXiVBRX8LRQaivI02guUIgc9+E7bAAlSWgqzhwQDTgxQDYkIB5gXMQLT1cHUHVBqC08igZUloKs4cAGnBigGxIQDzEJEC09XBYuqBgtPIoLUcQKhU6CoNooHlnTFQWpfSBUi1QDehV0ZAQnofRUFREgNBtFA8s61BQWpfSBUjVAN6FXRkBCFANiGQgjYKQGKn2ZBJQgDipBimLVICsbjNh5nyCsZawAbFYKQGKn2YoFLkgDipoMU8rVICrcZsPMAWDGsALwI4gPYtEnmrQSlCkBRrWUC00gB0oaeYCq5i6XIINWMgelokVoJQKAo1rOEBppADpQ08wFVzF0uQWhqxkG8TKAYjBgJGRYCiwRoGV0bBICPKioLv9HgLAVUakZwBiMGAg1IsBRZ/oh9wC6Ngk8gR5UVBd/o8BYCqjUjOAziXi+UDWpLQa1k1n+gqlVgNaLRYgOpcqgtNZILmoaqB1aotA6DWf6BxCxYDWi0WIFp91yqC01kguahKga8EQ1ACqAOiU0QFp1cswDVp0ApVq04Aq7po6gLlYYMBHRVAOiU1QBDq5ZlA1adAKVatOAKu6aOoC5WGDASOIBRWhgG+gqqBQVKgfpL6WAqoKoBsWCxqQBFYrBQNDVGAfYVIFBVFQP0ksBVQVQDYcZsakARWKwWgSkCqXa0ANa0AIVzDgCnAdBlRVQDYeVVyCwSHRAVK7WgMGtSgBCuYcAU4DoMpVQDYeVVyCsGHQDSWIGfc0IEMKAWJrBgLwpC0DYeYDyC6i5g6a5gDBL5GqQBhoQIFAMTWDAPhCFoGwyA8guouYO2uYAwSmqQAWSBnmMKBSLGp6M0FKWSAsTQAGTEAao0xdAWTz0rQE8xhQKRY1GaClLJBWBoUBDIoAao0xdAWTz0rQZ8Xwl/yIIggmZVagVSQLUrUC5NEq0E0w12ASiAyEEEzptAK1JAtVVqBQ0SrQRZa7AYlEBIwgKFUBEhoA8sytMWA3oSA6sFh0F1GejYsAwGC+gGhVAcEiqA8sytRiwG9CQHVgsOguoz0agMgUV9AJZ80D/9k=")
 
-
-
-  // / get my image url
-  // var imageUrl = 'https://cdn-images.farfetch-contents.com/15/57/69/32/15576932_28139286_300.jpg';
-  // // than create an image elm, the sizes are needed. 360x360 on this case
-  // var image = new Image(360, 360);
-
-
-  // image.onload = function () {
-  //   // act only after image load
-  //   console.log(image);
-
-  //   // than colorThief and get the color value 
-  //   var colorThief = new ColorThief();
-  //   var color = colorThief.getColor(image);
-  //   console.log("<>",color);
-  // };
-  // // image.src = imageUrl;
-
-
-  // const imgRef = createRef();
-
-
-
+  console.log("color:",data.vibrant)
 
 
 
@@ -116,21 +97,9 @@ function App() {
   return (
     <div className="App">
       <ProductList />
-      {/* <img
-            crossOrigin={"anonymous"}
-            ref={this.imgRef}
-            src={
-              "https://images.unsplash.com/photo-1516876437184-593fda40c7ce"
-            }
-            alt={"example"}
-            className={"example__img"}
-            onLoad={() => {
-              const colorThief = new ColorThief();
-              const img = this.imgRef.current;
-              const result = colorThief.getColor(img, 25);
-              console.log("OOOOO")
-            }}
-          /> */}
+      <div style={{ color: data.vibrant }}>
+        Text with the vibrant color
+      </div>
     </div>
   );
 }

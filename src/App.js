@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import './App.scss';
 import ProductList from './components/ProductList';
 import ntc from 'ntc';
 import ColorThief from 'color-thief';
+// import d from './assets/img.jpeg'
 
 //  10 products and identifies the prominent colour of each item of clothing. 
 // The output of this should be a JSON file which contains an array of products 
@@ -11,7 +12,6 @@ import ColorThief from 'color-thief';
 
 
 function App() {
-  // console.log("OROWPEJFIEN")
 
   // =========================
 
@@ -53,33 +53,47 @@ function App() {
   //   }
   // })
 
-    // TO DO: Extract dominent color from image 
-    // =========================
-    // let sourceImage = "https://cdn-images.farfetch-contents.com/15/57/69/32/15576932_28139286_300.jpg";
-    // let colorThief = new ColorThief();
-    // colorThief.getColor(sourceImage)
-    // .then(response => {
-    //   console.log(response)
-    // })
+  // TO DO: Extract dominent color from image 
+  // =========================
+
+  // let sourceImage = './assets/img.jpeg';
+  // let colorThief = new ColorThief();
+  // colorThief.getColor(sourceImage)
+  //   .then(response => {
+  //     console.log(response)
+  //   })
 
 
 
-    // / get my image url
-  var imageUrl = 'https://cdn-images.farfetch-contents.com/15/57/69/32/15576932_28139286_300.jpg';
-  // than create an image elm, the sizes are needed. 360x360 on this case
-  var image = new Image(360, 360);
+  // / get my image url
+  // var imageUrl = 'https://cdn-images.farfetch-contents.com/15/57/69/32/15576932_28139286_300.jpg';
+  // // than create an image elm, the sizes are needed. 360x360 on this case
+  // var image = new Image(360, 360);
 
 
-  image.onload = function () {
-    // act only after image load
-    console.log(image);
+  // image.onload = function () {
+  //   // act only after image load
+  //   console.log(image);
 
-    // than colorThief and get the color value 
-    var colorThief = new ColorThief();
-    var color = colorThief.getColor(image);
-    console.log("<>",color);
-  };
-  // image.src = imageUrl;
+  //   // than colorThief and get the color value 
+  //   var colorThief = new ColorThief();
+  //   var color = colorThief.getColor(image);
+  //   console.log("<>",color);
+  // };
+  // // image.src = imageUrl;
+
+
+  // const imgRef = createRef();
+
+
+
+
+
+
+
+
+
+
 
   // hex to color name
   // ============================
@@ -102,6 +116,21 @@ function App() {
   return (
     <div className="App">
       <ProductList />
+      {/* <img
+            crossOrigin={"anonymous"}
+            ref={this.imgRef}
+            src={
+              "https://images.unsplash.com/photo-1516876437184-593fda40c7ce"
+            }
+            alt={"example"}
+            className={"example__img"}
+            onLoad={() => {
+              const colorThief = new ColorThief();
+              const img = this.imgRef.current;
+              const result = colorThief.getColor(img, 25);
+              console.log("OOOOO")
+            }}
+          /> */}
     </div>
   );
 }

@@ -15,20 +15,23 @@ body,p,a,ul,li{
 
 
 .container {
-  border: 1px solid lightgray;
+  // border: 1px solid lightgray;
   margin: 0 auto;
   width: 80vw;
   display: flex;
   // min-height: 100vh;
   flex-wrap: wrap;
-  justify-content: space-around;
+  // justify-content: space-around;
   flex-direction: row;
+  justify-content: center;
 
   .product {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 45%;
     text-align: center;
     margin-bottom: 30px;
+    margin-right: 2px;
+    margin-left: 2px;
     
     img {
       max-width: 100%;
@@ -59,17 +62,19 @@ body,p,a,ul,li{
 
   .container {
     margin: 0 auto;
-    width: 80vw;
+    width: 70vw;
     display: flex;
     min-height: 100vh;;
     flex-wrap: wrap;
-    justify-content: space-around;
+    // justify-content: space-around;
     
   
     .product {
-      width: 300px;
+      width: 30%;
       text-align: center;
       margin-bottom: 70px;
+      // margin-right: 2px;
+      // margin-left: 2px;
     } 
   }
 }

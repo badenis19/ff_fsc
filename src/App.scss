@@ -1,0 +1,73 @@
+/* // reset - Removes default behavior */
+body,p,a,ul,li {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+};
+
+.container {
+  margin: 0 auto;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  
+  p {
+    text-decoration: none;
+    color: black;
+  }
+
+  .product {
+    width: 45%;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-right: 2px;
+    margin-left: 2px;
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+
+      &:hover {
+        cursor: grab;
+      }
+    }
+  
+  } 
+
+  p {
+    padding: 4px 0;
+  }
+}
+
+.top {
+  background: #DDDDDD;
+  color: black;
+  margin-top: 5%;
+  height: 30px;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.input-and-clear {
+  margin: 20px;
+}
+
+@media screen and (min-width: 960px){
+  .container {
+    margin: 0 auto;
+    width: 70vw;
+    display: flex;
+    min-height: 100vh;;
+    flex-wrap: wrap;
+   
+    .product {
+      width: 30%;
+      text-align: center;
+      margin-bottom: 70px;
+    } 
+  }
+}

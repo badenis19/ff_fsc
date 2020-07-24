@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import TopBanner from './TopBanner';
 
 const ProductList = () => {
 
   let [loading, setLoading] = useState(true);
   let [products, setProductList] = useState(null);
+  let uniqueBrands = []
 
   const fetchData = async () => {
     const url = 'https://www.farfetch.com/uk/plpslice/listing-api/query?setId=9645&view=180&gender=Men';
@@ -18,7 +20,7 @@ const ProductList = () => {
     fetchData();
   }, [])
 
-  let [filterValue, setFilterValue] = useState()
+  let [filterValue, setFilterValue] = useState("");
 
   const showProducts = () => {
     if (loading || !products) {
@@ -29,18 +31,31 @@ const ProductList = () => {
     else {
       return (
         <div className="container">
-          {products.filter(filter => filter.brand.name === filterValue).map(product => {
-            let url = "https://www.farfetch.com" + product.url;
-            return (
-              <div className="product" key={product.id}>
-                <a href={url}>
-                  <img onMouseOver={(e) => e.target.src = product.images.cutOut} onMouseOut={(e) => e.target.src = product.images.model} src={product.images.model} alt="" />
-                  <p><strong>{product.brand.name}</strong></p>
-                  <p>{product.shortDescription}</p>
-                </a>
-              </div>
-            )
-          })}
+          {!filterValue ?
+            products.map(product => {
+              let url = "https://www.farfetch.com" + product.url;
+              return (
+                <div className="product" key={product.id}>
+                  <a href={url}>
+                    <img onMouseOver={(e) => e.target.src = product.images.cutOut} onMouseOut={(e) => e.target.src = product.images.model} src={product.images.model} alt="" />
+                    <p><strong>{product.brand.name}</strong></p>
+                    <p>{product.shortDescription}</p>
+                  </a>
+                </div>
+              )
+            }) :
+            products.filter(filter => filter.brand.name === filterValue).map(product => {
+              let url = "https://www.farfetch.com" + product.url;
+              return (
+                <div className="product" key={product.id}>
+                  <a href={url}>
+                    <img onMouseOver={(e) => e.target.src = product.images.cutOut} onMouseOut={(e) => e.target.src = product.images.model} src={product.images.model} alt="" />
+                    <p><strong>{product.brand.name}</strong></p>
+                    <p>{product.shortDescription}</p>
+                  </a>
+                </div>
+              )
+            })}
         </div>
       )
     }
@@ -50,22 +65,34 @@ const ProductList = () => {
     setFilterValue(e.target.value)
   }
 
+  if (products) {
+    const allBrands = [];
+
+    products.forEach(product => {
+      allBrands.push(product.brand.name)
+    })
+
+    uniqueBrands = [...new Set(allBrands)];
+  }
+
   return (
-    <div>
-      <form >
+    <div className="filter-brand">
+      <TopBanner />
+      <div className="input-and-clear">
+        <p>Filter by brand:</p>
         <select onChange={(e) => updateFilter(e)}>
-          {(products && !loading)
+          {uniqueBrands
             &&
-            products.map(product => (
-              <option key={product.id} value={product.brand.name}>
-                {product.brand.name}
-              </option>
-            ))}
+            uniqueBrands.map((brand, id) => {
+              return (
+                <option key={id} value={brand}>
+                  {brand}
+                </option>
+              )
+            })}
         </select>
-
-      </form>
-
-      <h1>Products below:</h1>
+        <button onClick={() => setFilterValue("")}>Clear</button>
+      </div>
       {showProducts()}
     </div>
   )

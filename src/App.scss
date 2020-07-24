@@ -12,8 +12,6 @@ body,p,a,ul,li{
   gap: 10px;
 }
 
-
-
 .container {
   // border: 1px solid lightgray;
   margin: 0 auto;
@@ -21,6 +19,7 @@ body,p,a,ul,li{
   display: flex;
   // min-height: 100vh;
   flex-wrap: wrap;
+  // justify-content: space-around;
   flex-direction: row;
   justify-content: center;
   
@@ -53,11 +52,31 @@ body,p,a,ul,li{
   }
 }
 
-// @media screen and (min-width: 620px){
-//   body{
-//     // background-color: red;
-//   }
-// }
+.top {
+  background: #DDDDDD;
+  color: black;
+  margin-top: 5%;
+  height: 30px;
+
+  h3 {
+    text-align: center;
+  }
+}
+
+.input-and-clear {
+  margin: 20px;
+}
+
+
+
+.filter-brand {
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+}
+
+
+
 
 @media screen and (min-width: 960px){
   body{
@@ -80,5 +99,15 @@ body,p,a,ul,li{
       // margin-right: 2px;
       // margin-left: 2px;
     } 
+  }
+}
+
+@media screen and (min-width: 1100px){
+  body{
+    // background-color: red;
+  }
+
+  select {
+    // margin-left: 15px;
   }
 }

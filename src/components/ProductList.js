@@ -3,10 +3,13 @@ import TopBanner from './TopBanner';
 
 const ProductList = () => {
 
+  // variables and useState hooks
   let [loading, setLoading] = useState(true);
   let [products, setProductList] = useState(null);
+  let [filterValue, setFilterValue] = useState("");
   let uniqueBrands = []
 
+  // fetching data from API and storing it using hooks
   const fetchData = async () => {
     const url = 'https://www.farfetch.com/uk/plpslice/listing-api/query?setId=9645&view=180&gender=Men';
     const response = await fetch(url);
@@ -16,12 +19,12 @@ const ProductList = () => {
     setLoading(false)
   }
 
+  // useEffect to fetchData every time the component renders
   useEffect(() => {
     fetchData();
   }, [])
 
-  let [filterValue, setFilterValue] = useState("");
-
+  // function to display the products fetched (then called in the render)
   const showProducts = () => {
     if (loading || !products) {
       return (
@@ -61,10 +64,12 @@ const ProductList = () => {
     }
   }
 
+  // function to update the filter by brand
   const updateFilter = (e) => {
     setFilterValue(e.target.value)
   }
 
+  // creating unique list of brand so that they are no duplicated in the brand filter list 
   if (products) {
     const allBrands = [];
 

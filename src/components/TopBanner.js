@@ -4,7 +4,7 @@ const TopBanner = () => {
 
   return (
     <div className="top">
-      <h3>Welcome!</h3>
+      <h2>Welcome!</h2>
     </div>
   );
 }

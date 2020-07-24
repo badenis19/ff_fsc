@@ -9,7 +9,7 @@ Create a Reactjs application which outputs products from this feed with a filter
 
 ## Getting Started
 
-Download the reposiory.
+Download the repository.
 
 Launch the following command to install packages and run the application:
 

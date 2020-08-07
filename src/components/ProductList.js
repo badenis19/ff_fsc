@@ -88,7 +88,7 @@ const ProductList = () => {
         <select onChange={(e) => updateFilter(e)}>
           {uniqueBrands
             &&
-            uniqueBrands.map((brand, id) => {
+            uniqueBrands.sort().map((brand, id) => {
               return (
                 <option key={id} value={brand}>
                   {brand}
